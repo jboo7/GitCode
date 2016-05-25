@@ -1,17 +1,23 @@
+#include <memory>
+#include <vector>
+#include "afsitem.hpp"
+
 #ifndef _FOLDER_HPP
 #define _FOLDER_HPP
 
-#include "afsitem.hpp"
+using namespace std;
 
 class Folder : public AFSItem {
-public:
+  public:
     Folder();
     Folder(const string);
-
     virtual ~Folder();
 
-    void add(const shared_ptr<IElement>);
-    void draw() const;
+    virtual void add(shared_ptr<IElement>&);
+    virtual void draw() const;
+
+  private:
+    vector<shared_ptr<IElement>> mChildren;
 };
 
 #endif

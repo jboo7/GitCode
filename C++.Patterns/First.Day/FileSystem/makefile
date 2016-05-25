@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-c -Wall -std=c++0x
+CFLAGS=-c -Wall -std=c++0x -g
 LDFLAGS=
 SOURCES=main.cpp file.cpp folder.cpp afsitem.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
