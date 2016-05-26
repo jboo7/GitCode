@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall -std=c++0x -g
 LDFLAGS=
-SOURCES=main.cpp file.cpp folder.cpp afsitem.cpp
+SOURCES=main.cpp aitem.cpp file.cpp folder.cpp findvisitor.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main.exe
 

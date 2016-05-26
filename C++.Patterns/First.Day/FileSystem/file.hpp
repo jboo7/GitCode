@@ -1,17 +1,16 @@
-#include <iostream>
-#include <memory>
-#include "afsitem.hpp"
-
 #ifndef _FILE_HPP
 #define _FILE_HPP
 
-using namespace std;
+#include "aitem.hpp"
 
-class File : public AFSItem {
+class File : public AItem {
   public:
     File();
     File(const string);
     virtual ~File();
+
+  public:
+    virtual void accept(IVisitor&) const;
 
     virtual void draw() const;
 };

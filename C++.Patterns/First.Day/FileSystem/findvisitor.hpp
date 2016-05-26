@@ -1,11 +1,27 @@
-#include "ifsvisitor.hpp"
-
 #ifndef _FINDVISITOR_HPP
 #define _FINDVISITOR_HPP
 
-class FindVisitor : public IFSVisitor {
+#include <vector>
+#include <memory>
+#include "ivisitor.hpp"
+#include "itemtype.hpp"
+
+using namespace std;
+
+class IVisitor;
+
+class FindVisitor : public IVisitor {
 public:
-    virtual void visit(const shared_ptr<IFSItem>);
-}
+    FindVisitor(const string);
+    virtual ~FindVisitor();
+
+public:
+    virtual void visit(const IItem&);
+
+private:
+    vector<string> mFoundNames;
+    vector<ItemType> mFoundTypes;
+    string mName;
+};
 
 #endif

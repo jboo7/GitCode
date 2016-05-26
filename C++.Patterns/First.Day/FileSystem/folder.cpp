@@ -1,22 +1,29 @@
+#include <iomanip>
 #include "folder.hpp"
 
-Folder::Folder() : AFSItem::AFSItem(), mChildren() {}
-
-Folder::Folder(const string name) : AFSItem::AFSItem(name), mChildren() {}
-
+Folder::Folder() : AItem::AItem(FOLDERTYPE) {}
+Folder::Folder(const string name) : AItem::AItem(FOLDERTYPE, name) {}
 Folder::~Folder() {}
 
-void Folder::add(shared_ptr<IElement>& e) {
-    mChildren.push_back(e);
-    e->setLevel(this->getLevel() + 1);
+void Folder::accept(IVisitor& visitor) const {
+    visitor.visit(*this);
+    for (vector<shared_ptr<ITreeElement>>::const_iterator it =
+             mChildren.begin();
+         it != mChildren.end(); it++) {
+        (*it)->accept(visitor);
+    }
+}
+
+void Folder::add(const shared_ptr<ITreeElement> element) {
+    mChildren.push_back(element);
+    element->level(this->level() + 1);
 }
 
 void Folder::draw() const {
-    for (int i = 0; i < this->getLevel(); i++) {
-        cout << "  ";
-    }
-    cout << this->getName() << " DIR" << endl;
-    for (vector<shared_ptr<IElement>>::const_iterator it = mChildren.begin();
+    cout << setw(2 * this->level() + this->name().length()) << this->name()
+         << " - DIR" << endl;
+    for (vector<shared_ptr<ITreeElement>>::const_iterator it =
+             mChildren.begin();
          it != mChildren.end(); it++) {
         (*it)->draw();
     }

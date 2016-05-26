@@ -1,14 +1,15 @@
+#include <iomanip>
 #include "file.hpp"
 
-File::File() : AFSItem::AFSItem() {}
-
-File::File(const string name) : AFSItem::AFSItem(name) {}
-
+File::File() : AItem::AItem(FILETYPE) {}
+File::File(const string name) : AItem::AItem(FILETYPE, name) {}
 File::~File() {}
 
+void File::accept(IVisitor& visitor) const {
+    visitor.visit(*this);
+}
+
 void File::draw() const {
-    for (int i = 0; i < this->getLevel(); i++) {
-        cout << "  ";
-    }
-    cout << this->getName() << " FILE" << endl;
+    cout << setw(2 * this->level() + this->name().length()) << this->name()
+         << " - FILE" << endl;
 }

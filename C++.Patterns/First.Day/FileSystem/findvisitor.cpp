@@ -1,5 +1,8 @@
 #include "findvisitor.hpp"
 
-void FindVisitor::visit(const shared_ptr<IFSItem> item) {
+FindVisitor::FindVisitor(const string name) : mFoundNames(), mFoundTypes(), mName(name) {}
+FindVisitor::~FindVisitor() {}
+
+void FindVisitor::visit(const IItem& item) {
     
 }
