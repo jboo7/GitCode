@@ -7,6 +7,7 @@
 
 #include "file.hpp"
 #include "folder.hpp"
+#include "findvisitor.hpp"
 
 using namespace std;
 
@@ -24,6 +25,12 @@ int main(int argc, char** argv) {
     tree(dir, dirpath);
 
     dir->draw();
+
+    cout << "Searching for items..." << endl;
+
+    shared_ptr<FindVisitor> find(new FindVisitor(string("1.bat")));
+    dir->accept(*find);
+    find->show();
 
     return 0;
 }

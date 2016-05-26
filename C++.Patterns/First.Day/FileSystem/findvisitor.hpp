@@ -17,6 +17,7 @@ public:
 
 public:
     virtual void visit(const IItem&);
+    void show() const;
 
 private:
     vector<string> mFoundNames;
