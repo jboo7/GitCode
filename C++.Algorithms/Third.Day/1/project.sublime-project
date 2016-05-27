@@ -3,14 +3,14 @@
         {
             "name": "Build",
             "selector": "main.cpp",
-            "cmd": ["g++", "-std=c++11", "-o", "bin/$file_base_name.exe", "$file_name"],
+            "cmd": ["g++", "-g", "-Wall", "-std=c++11", "-o", "$file_base_name.exe", "$file_name"],
             "file_regex": "^(..*):([0-9]+):([0-9]*): (error|note).*",
    
             "variants":
             [
                 {
                     "name": "Run",
-                    "working_dir": "${project_path}/bin",
+                    "working_dir": "${project_path}",
                     "cmd": ["./main.exe"]
                 }
 

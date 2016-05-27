@@ -15,6 +15,7 @@ void test(T expected, TFunc f, P1 p1) {
     if (expected != result) {
         cout << "Error: "
              << "expected - " << expected << ", got - " << result << endl;
+        cout << p1 << endl;
         assert(false);
     }
 }
@@ -25,9 +26,7 @@ void test(T expected, TFunc f, P1 p1, P2 p2) {
     if (expected != result) {
         cout << "Error: "
              << "expected - " << expected << ", got - " << result << endl;
-        for_each(p1.begin(), p1.end(), [](int v) { cout << v << " "; });
-        cout << endl;
-        cout << "P2: " << p2 << endl;
+        cout << p1 << endl << p2 << endl;
         assert(false);
     }
 }
