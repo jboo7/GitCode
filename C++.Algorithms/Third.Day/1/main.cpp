@@ -94,20 +94,23 @@ int main(int argc, char** argv) {
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
     fill(v, 1000 * 1000 * 100);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(t2 - t1).count();
+    auto duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
 
     cout << "Sorting: ";
     t1 = high_resolution_clock::now();
     sort(v.begin(), v.end());
     t2 = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
 
     cout << "Searching: ";
     t1 = high_resolution_clock::now();
-    uniform_search_1(v.begin(), v.end(), 150000);
+    VecI::const_iterator result = bsearch<VecI::const_iterator, CInt>(v.begin(), v.end(), 150000);
     t2 = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
+    cout << "Result: " << (result - v.begin()) << endl;
 
     cout << "Ok." << endl;
 

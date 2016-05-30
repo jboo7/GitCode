@@ -113,7 +113,6 @@ TIter upper_bound_1(TIter begin, TIter end, T key) {
             begin = m + 1;  // [m+1, end)
         }
     }
-
     return begin;
 }
 
