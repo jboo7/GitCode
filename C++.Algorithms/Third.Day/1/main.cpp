@@ -73,26 +73,23 @@ void test_all_searches() {
     test_search(uniform_search_1<VecI::const_iterator, CInt>);
     cout << "Ok." << endl;
 
+    cout << "Ternary Search 1" << endl;
+    test_search(ternary_search_1<VecI::const_iterator, CInt>);
+    cout << "Ok." << endl;
+
     CInt key = 7;
     VecI v({0, 1, 2, 3, 3, 3, 3, 4, 5, 6, 6, 7, 7, 7, 7, 7});
-
-    auto rl =
-        lower_bound_1<VecI::const_iterator, CInt>(v.begin(), v.end(), key);
-    auto ru =
-        upper_bound_1<VecI::const_iterator, CInt>(v.begin(), v.end(), key);
     cout << v << endl;
     cout << "Key: " << key << endl
-         << "Count: " << (ru - rl) << endl;
-}
-
-int main(int argc, char** argv) {
-    test_all_searches();
-
-    VecI v;
+         << "Count: "
+         << (upper_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(),
+                                                       key) -
+             lower_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(), key))
+         << endl;
 
     cout << "Generating: ";
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
-    fill(v, 1000 * 1000 * 100);
+    fill(v, 1000 * 1000 * 10);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
@@ -106,13 +103,17 @@ int main(int argc, char** argv) {
 
     cout << "Searching: ";
     t1 = high_resolution_clock::now();
-    VecI::const_iterator result = bsearch<VecI::const_iterator, CInt>(v.begin(), v.end(), 150000);
+    VecI::const_iterator result = ternary_search_1<VecI::const_iterator, CInt>(
+        v.begin(), v.end(), 150000);
     t2 = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
     cout << "Result: " << (result - v.begin()) << endl;
 
     cout << "Ok." << endl;
+}
 
+int main(int argc, char** argv) {
+    test_all_searches();
     return 0;
 }

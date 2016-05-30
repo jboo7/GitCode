@@ -102,6 +102,17 @@ TIter lower_bound_1(TIter begin, TIter end, T key) {
 }
 
 template <class TIter, class T>
+TIter lower_bound_2(TIter begin, TIter end, T key) {
+    assert(is_sorted(begin, end));
+    if (begin == end) {
+        return end;
+    }
+    auto m = begin + (end - begin) / 2;
+    return (key > *m) ? lower_bound_2(m + 1, end, key)
+                      : lower_bound_2(begin, m, key);
+}
+
+template <class TIter, class T>
 TIter upper_bound_1(TIter begin, TIter end, T key) {
     assert(is_sorted(begin, end));
     while (begin < end) {
@@ -117,13 +128,24 @@ TIter upper_bound_1(TIter begin, TIter end, T key) {
 }
 
 template <class TIter, class T>
+TIter upper_bound_2(TIter begin, TIter end, T key) {
+    assert(is_sorted(begin, end));
+    if (begin == end) {
+        return end;
+    }
+    auto m = begin + (end - begin) / 2;
+    return (key < *m) ? upper_bound_2(begin, m, key)
+                      : upper_bound_2(m + 1, end, key);
+}
+
+template <class TIter, class T>
 TIter uniform_search_1(TIter begin, TIter end, T key) {
     assert(is_sorted(begin, end));
     if (begin == end) {
         return end;
     }
     TIter l = begin, r = end - 1, m;
-    while (*l < key && *r > key) {
+    while ((*l) < key && (*r) > key) {
         m = l + (key - (*l)) * (r - l) / ((*r) - (*l));
         if (key < *m) {
             r = m - 1;
@@ -143,12 +165,34 @@ TIter uniform_search_1(TIter begin, TIter end, T key) {
 }
 
 template <class TIter, class T>
-TIter binary_search_3(TIter begin, TIter end, T key) {
-    auto res = upper_bound_1(begin, end, key);
-    if (res == end)
-        return end;
+TIter binary_search_3(TIter begin, TIter end, T key) {}
 
-    return *res == key ? res : end;
+template <class TIter, class T>
+TIter ternary_search_1(TIter begin, TIter end, T key) {
+    TIter l = begin, r = end, m1, m2;
+    assert(is_sorted(begin, end));
+
+    while (l < r) {
+        auto len = r - l;
+        m1 = l + len / 3;
+        m2 = l + (2 * len) / 3;
+
+        if (key < *m1) {
+            r = m1;
+        } else if (*m1 < key) {
+            if (key < *m2) {
+                l = m1 + 1;
+                r = m2;
+            } else if (*m2 < key) {
+                l = m2 + 1;
+            } else {
+                return m2;
+            }
+        } else {
+            return m1;
+        }
+    }
+    return end;
 }
 
 #endif
