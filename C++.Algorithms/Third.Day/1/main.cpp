@@ -73,43 +73,38 @@ void test_all_searches() {
     test_search(uniform_search_1<VecI::const_iterator, CInt>);
     cout << "Ok." << endl;
 
+    cout << "Ternary Search 1" << endl;
+    test_search(ternary_search_1<VecI::const_iterator, CInt>);
+    cout << "Ok." << endl;
+
     CInt key = 7;
     VecI v({0, 1, 2, 3, 3, 3, 3, 4, 5, 6, 6, 7, 7, 7, 7, 7});
 
-    auto rl =
-        lower_bound_1<VecI::const_iterator, CInt>(v.begin(), v.end(), key);
-    auto ru =
-        upper_bound_1<VecI::const_iterator, CInt>(v.begin(), v.end(), key);
     cout << v << endl;
     cout << "Key: " << key << endl
-         << "Count: " << (ru - rl) << endl;
-}
+         << "Count: "
+         << (upper_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(),
+                                                       key) -
+             lower_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(), key))
+         << endl;
 
-int main(int argc, char** argv) {
-    test_all_searches();
-
-    VecI v;
-
+    cout << "Testing ternary search" << endl;
+    v.clear();
+    fill(v, 1000 * 1000);
+    sort(v.begin(), v.end());
+    cout << "Searching" << endl;
+    cout << (ternary_search_1(v.begin(), v.end(), 600) - v.begin()) << endl;
+    /*
     cout << "Generating: ";
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
     fill(v, 1000 * 1000 * 100);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     auto duration = duration_cast<microseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
+    */
+}
 
-    cout << "Sorting: ";
-    t1 = high_resolution_clock::now();
-    sort(v.begin(), v.end());
-    t2 = high_resolution_clock::now();
-    cout << "took " << duration << " ms." << endl;
-
-    cout << "Searching: ";
-    t1 = high_resolution_clock::now();
-    uniform_search_1(v.begin(), v.end(), 150000);
-    t2 = high_resolution_clock::now();
-    cout << "took " << duration << " ms." << endl;
-
-    cout << "Ok." << endl;
-
+int main(int argc, char** argv) {
+    test_all_searches();
     return 0;
 }
