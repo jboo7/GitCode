@@ -26,7 +26,7 @@ ostream& operator<<(ostream& o, const vector<T>& v) {
 
 void fill(VecI& v, CInt N) {
     VecI used(N);
-    Int l = 0, u = N - 1, n;
+    Int l = 0, u = N, n;
     uniform_int_distribution<Int> unif(l,u);
     default_random_engine re;
     for (Int i = 0; i < N; i++) {

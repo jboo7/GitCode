@@ -87,9 +87,10 @@ void test_all_searches() {
              lower_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(), key))
          << endl;
 
+    v.clear();
     cout << "Generating: ";
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
-    fill(v, 1000 * 1000 * 10);
+    fill(v, 1000 * 1000 * 1000);
     high_resolution_clock::time_point t2 = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
@@ -101,10 +102,18 @@ void test_all_searches() {
     duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
 
-    cout << "Searching: ";
+    cout << "Searching ternary: ";
     t1 = high_resolution_clock::now();
     VecI::const_iterator result = ternary_search_1<VecI::const_iterator, CInt>(
         v.begin(), v.end(), 150000);
+    t2 = high_resolution_clock::now();
+    duration = duration_cast<milliseconds>(t2 - t1).count();
+    cout << "took " << duration << " ms." << endl;
+    cout << "Result: " << (result - v.begin()) << endl;
+
+    cout << "Searching binary: ";
+    t1 = high_resolution_clock::now();
+    result = bsearch<VecI::const_iterator, CInt>(v.begin(), v.end(), 150000);
     t2 = high_resolution_clock::now();
     duration = duration_cast<milliseconds>(t2 - t1).count();
     cout << "took " << duration << " ms." << endl;
