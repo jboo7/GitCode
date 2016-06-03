@@ -87,6 +87,7 @@ void test_all_searches() {
              lower_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(), key))
          << endl;
 
+
     v.clear();
     cout << "Generating: ";
     high_resolution_clock::time_point t1 = high_resolution_clock::now();
@@ -122,7 +123,21 @@ void test_all_searches() {
     cout << "Ok." << endl;
 }
 
+void test_all_sorts() {
+    VecI v({8, 1, 3, 12, 4, 8});
+    VecI empty;
+
+    cout << v << endl;
+    bubble_sort_2(v.begin(), v.end());
+    cout << v << endl;
+
+    cout << empty << endl;
+    bubble_sort_2(empty.begin(), empty.end());
+    cout << empty << endl;
+}
+
 int main(int argc, char** argv) {
     test_all_searches();
+    test_all_sorts();
     return 0;
 }

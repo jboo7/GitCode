@@ -5,7 +5,6 @@
 #include <vector>
 #include <iterator>
 #include <fstream>
-#include <random>
 
 using namespace std;
 
@@ -24,18 +23,11 @@ ostream& operator<<(ostream& o, const vector<T>& v) {
     return o;
 }
 
-void fill(VecI& v, CInt N) {
-    VecI used(N);
-    Int l = 0, u = N, n;
-    uniform_int_distribution<Int> unif(l,u);
-    default_random_engine re;
-    for (Int i = 0; i < N; i++) {
-        do {
-            n = unif(re);
-        } while (used[n] != 0);
-        used[n] = 1;
-        v.push_back(n);
-    }
+template <class TIter>
+void swap_it(TIter x, TIter y) {
+    auto t = *x;
+    *x = *y;
+    *y = t;
 }
 
 #endif
