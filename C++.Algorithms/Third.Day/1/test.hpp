@@ -9,6 +9,15 @@
 
 using namespace std;
 
+template <class T>
+void test(T expected, T result) {
+    if (expected != result) {
+        cout << "Error: "
+             << "expected - " << expected << ", got - " << result << endl;
+        assert(false);
+    }
+}
+
 template <class T, class TFunc, class P1>
 void test(T expected, TFunc f, P1 p1) {
     auto result = f(p1);
@@ -26,7 +35,8 @@ void test(T expected, TFunc f, P1 p1, P2 p2) {
     if (expected != result) {
         cout << "Error: "
              << "expected - " << expected << ", got - " << result << endl;
-        cout << p1 << endl << p2 << endl;
+        cout << p1 << endl
+             << p2 << endl;
         assert(false);
     }
 }

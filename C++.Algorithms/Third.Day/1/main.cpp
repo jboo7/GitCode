@@ -86,54 +86,48 @@ void test_all_searches() {
                                                        key) -
              lower_bound_2<VecI::const_iterator, CInt>(v.begin(), v.end(), key))
          << endl;
+}
 
+template <class TFunc>
+void test_sort(TFunc sort_impl) {
+    auto sort_adapter = [sort_impl](VecI v, VecI sorted) {
+        sort_impl(v.begin(), v.end());
+        test(v.size(), sorted.size());
+        for (size_t i = 0; i < v.size() && i < sorted.size(); i++) {
+            test(v[i], sorted[i]);
+        }
+        return 0;
+    };
 
-    v.clear();
-    cout << "Generating: ";
-    high_resolution_clock::time_point t1 = high_resolution_clock::now();
-    fill(v, 1000 * 1000 * 1000);
-    high_resolution_clock::time_point t2 = high_resolution_clock::now();
-    auto duration = duration_cast<milliseconds>(t2 - t1).count();
-    cout << "took " << duration << " ms." << endl;
-
-    cout << "Sorting: ";
-    t1 = high_resolution_clock::now();
-    sort(v.begin(), v.end());
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(t2 - t1).count();
-    cout << "took " << duration << " ms." << endl;
-
-    cout << "Searching ternary: ";
-    t1 = high_resolution_clock::now();
-    VecI::const_iterator result = ternary_search_1<VecI::const_iterator, CInt>(
-        v.begin(), v.end(), 150000);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(t2 - t1).count();
-    cout << "took " << duration << " ms." << endl;
-    cout << "Result: " << (result - v.begin()) << endl;
-
-    cout << "Searching binary: ";
-    t1 = high_resolution_clock::now();
-    result = bsearch<VecI::const_iterator, CInt>(v.begin(), v.end(), 150000);
-    t2 = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(t2 - t1).count();
-    cout << "took " << duration << " ms." << endl;
-    cout << "Result: " << (result - v.begin()) << endl;
-
-    cout << "Ok." << endl;
+    sort_adapter(VecI(), VecI());
+    sort_adapter(VecI({0}), VecI({0}));
+    sort_adapter(VecI({1, 0}), VecI({0, 1}));
+    sort_adapter(VecI({2, 1, 0}), VecI({0, 1, 2}));
+    sort_adapter(VecI({3, 2, 1, 0}), VecI({0, 1, 2, 3}));
+    sort_adapter(VecI({4, 3, 2, 1, 0}), VecI({0, 1, 2, 3, 4}));
+    sort_adapter(VecI({5, 4, 3, 2, 1, 0}), VecI({0, 1, 2, 3, 4, 5}));
+    sort_adapter(VecI({6, 5, 4, 3, 2, 1, 0}), VecI({0, 1, 2, 3, 4, 5, 6}));
+    sort_adapter(VecI({7, 6, 5, 4, 3, 2, 1, 0}), VecI({0, 1, 2, 3, 4, 5, 6, 7}));
+    sort_adapter(VecI({8, 7, 6, 5, 4, 3, 2, 1, 0}), VecI({0, 1, 2, 3, 4, 5, 6, 7, 8}));
+    sort_adapter(VecI({9, 8, 7, 6, 5, 4, 3, 2, 1, 0}), VecI({0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
 }
 
 void test_all_sorts() {
-    VecI v({8, 1, 3, 12, 4, 8});
-    VecI empty;
+    /*cout << "Insertion sort" << endl;
+    test_sort(insertion_sort_1<VecI::iterator>);
+    cout << "Ok." << endl;
 
-    cout << v << endl;
-    bubble_sort_2(v.begin(), v.end());
-    cout << v << endl;
+    cout << "Bubble sort 1" << endl;
+    test_sort(bubble_sort_1<VecI::iterator>);
+    cout << "Ok." << endl;
 
-    cout << empty << endl;
-    bubble_sort_2(empty.begin(), empty.end());
-    cout << empty << endl;
+    cout << "Bubble sort 2" << endl;
+    test_sort(bubble_sort_2<VecI::iterator>);
+    cout << "Ok." << endl;
+
+    cout << "Funny selection sort" << endl;
+    test_sort(funny_selection_sort<VecI::iterator>);
+    cout << "Ok." << endl;*/
 }
 
 int main(int argc, char** argv) {
