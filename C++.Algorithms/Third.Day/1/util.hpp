@@ -24,7 +24,7 @@ ostream& operator<<(ostream& o, const vector<T>& v) {
 }
 
 template <class TIter>
-void swap1(TIter x, TIter y) {
+void swap_it(TIter x, TIter y) {
     auto t = *x;
     *x = *y;
     *y = t;
