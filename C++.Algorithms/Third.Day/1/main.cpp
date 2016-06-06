@@ -1,10 +1,11 @@
 #include <iostream>
 #include <chrono>
 
-#include "sort.hpp"
 #include "search.hpp"
 #include "util.hpp"
 #include "test.hpp"
+
+#include "sort2.hpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -89,16 +90,11 @@ void test_all_searches() {
 }
 
 void test_all_sorts() {
-    VecI v({8, 1, 3, 12, 4, 8});
-    VecI empty;
+    VecI v({9, 8, 7, 6, 5, 4, 3, 2, 1, 0});
 
     cout << v << endl;
-    bubble_sort_2(v.begin(), v.end());
+    insertion_sort(v.begin(), v.end());
     cout << v << endl;
-
-    cout << empty << endl;
-    bubble_sort_2(empty.begin(), empty.end());
-    cout << empty << endl;
 }
 
 int main(int argc, char** argv) {

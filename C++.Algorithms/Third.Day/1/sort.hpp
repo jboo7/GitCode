@@ -81,7 +81,7 @@ template <class TIter> void bubble_sort_2(TIter b, TIter e) {
 
 template <class TIter>
 void insertion_sort_1(TIter b, TIter e) {
-    for () {
+    for (TIter pivot = b; pivot < e; pivot++) {
         assert(is_sorted(b, pivot));
         for (TIter i = pivot; i != b; i--) {
             // insert *pivot to [begin, pivot)
