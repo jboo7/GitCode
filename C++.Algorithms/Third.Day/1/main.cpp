@@ -1,10 +1,11 @@
 #include <iostream>
 #include <chrono>
 
-#include "sort.hpp"
 #include "search.hpp"
 #include "util.hpp"
 #include "test.hpp"
+
+#include "sort2.hpp"
 
 using namespace std;
 using namespace std::chrono;
@@ -113,6 +114,7 @@ void test_sort(TFunc sort_impl) {
 }
 
 void test_all_sorts() {
+<<<<<<< HEAD
     /*cout << "Insertion sort" << endl;
     test_sort(insertion_sort_1<VecI::iterator>);
     cout << "Ok." << endl;
@@ -128,6 +130,13 @@ void test_all_sorts() {
     cout << "Funny selection sort" << endl;
     test_sort(funny_selection_sort<VecI::iterator>);
     cout << "Ok." << endl;*/
+=======
+    VecI v({9, 8, 7, 6, 5, 4, 3, 2, 1, 0});
+
+    cout << v << endl;
+    insertion_sort(v.begin(), v.end());
+    cout << v << endl;
+>>>>>>> 2796b4f5151c8651f06a24821d09e926aac449fe
 }
 
 int main(int argc, char** argv) {
