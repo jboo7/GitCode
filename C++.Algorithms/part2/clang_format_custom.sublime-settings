@@ -1,0 +1,5 @@
+{
+	"BasedOnStyle": "Chromiun",
+	"IndentWidth": 4,
+	"AccessModifierOffset": -2
+}
