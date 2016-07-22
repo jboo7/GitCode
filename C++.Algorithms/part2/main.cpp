@@ -2,6 +2,8 @@
 #include <vector>
 #include <assert.h>
 
+#include "sorted_vector.cpp"
+
 using namespace std;
 
 size_t parent(size_t);
@@ -34,6 +36,8 @@ int main(int argc, char** argv) {
     heap_sort(A);
 
     cout << A << endl;
+
+    sorted_vector<int> sv();
 
     return 0;
 }
