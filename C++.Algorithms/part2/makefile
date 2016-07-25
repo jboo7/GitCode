@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-c -Wall -std=c++0x -O3 -g
 LDFLAGS=
-SOURCES=main.cpp sorted_vector.cpp
+SOURCES=main.cpp sorted_vector.cpp list.cpp
 OBJECTS=$(SOURCES:.cpp=.o)
 EXECUTABLE=main.exe
 

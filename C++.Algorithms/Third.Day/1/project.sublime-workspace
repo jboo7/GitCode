@@ -87,7 +87,7 @@
 			"file": "makefile",
 			"settings":
 			{
-				"buffer_size": 268,
+				"buffer_size": 288,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,15 +95,7 @@
 			"file": "main.cpp",
 			"settings":
 			{
-				"buffer_size": 3111,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "sort.hpp",
-			"settings":
-			{
-				"buffer_size": 2234,
+				"buffer_size": 4583,
 				"line_ending": "Windows"
 			}
 		},
@@ -127,7 +119,7 @@
 			"file": "util.hpp",
 			"settings":
 			{
-				"buffer_size": 514,
+				"buffer_size": 516,
 				"line_ending": "Windows"
 			}
 		},
@@ -135,7 +127,7 @@
 			"file": "test.hpp",
 			"settings":
 			{
-				"buffer_size": 796,
+				"buffer_size": 1025,
 				"line_ending": "Windows"
 			}
 		}
@@ -291,6 +283,7 @@
 	},
 	"file_history":
 	[
+		"/P/Users/mtkachov/Documents/GitCode/C++.Algorithms/Third.Day/1/sort.hpp",
 		"/D/GitCode/C++.Algorithms/Third.Day/1/test.hpp",
 		"/D/GitCode/C++.Algorithms/Third.Day/1/util.hpp",
 		"/D/GitCode/C++.Algorithms/Third.Day/1/search.hpp",
@@ -363,7 +356,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -379,8 +372,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								419,
+								419
 							]
 						],
 						"settings":
@@ -393,7 +386,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
@@ -402,7 +395,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 268,
+						"buffer_size": 288,
 						"regions":
 						{
 						},
@@ -421,7 +414,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -430,15 +423,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3111,
+						"buffer_size": 4583,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2910,
-								2910
+								389,
+								389
 							]
 						],
 						"settings":
@@ -448,43 +441,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1245.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "sort.hpp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2234,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2218,
-								2218
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 930.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "clang_format_custom.sublime-settings",
 					"semi_transient": false,
 					"settings":
@@ -508,11 +472,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 4,
 					"file": "search.hpp",
 					"semi_transient": false,
 					"settings":
@@ -542,20 +506,20 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 5,
 					"file": "util.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 514,
+						"buffer_size": 516,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								462,
-								462
+								0,
+								0
 							]
 						],
 						"settings":
@@ -572,12 +536,12 @@
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 6,
 					"file": "test.hpp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 796,
+						"buffer_size": 1025,
 						"regions":
 						{
 						},

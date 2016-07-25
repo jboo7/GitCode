@@ -3,8 +3,10 @@
 #include <assert.h>
 
 #include "sorted_vector.cpp"
+#include "list.cpp"
 
 using namespace std;
+using namespace BiList;
 
 size_t parent(size_t);
 size_t left(size_t);
@@ -38,6 +40,11 @@ int main(int argc, char** argv) {
     cout << A << endl;
 
     sorted_vector<int> sv();
+
+    Node<int>* n1 = new Node<int>(10, NULL, NULL);
+    insert_after(n1, 15);
+
+    cout << n1->data << endl;
 
     return 0;
 }

@@ -43,7 +43,7 @@ class sorted_vector {
         return std::lower_bound(begin(), end(), x);
     }
     const_iterator upper_bound(const_reference x) const {
-        return std::upper_bound(begin(), end(), x)
+        return std::upper_bound(begin(), end(), x);
     }
 
   public:  // element access
